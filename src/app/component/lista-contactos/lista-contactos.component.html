@@ -1,0 +1,118 @@
+<div class="container mt-3">
+    <button type="button" class="btn fondo-boton mx-auto" (click)="Modal_Nuevo_Contacto(nuevo)">
+      <i class="fa fa-user-plus" aria-hidden="true"></i>
+      Nuevo Contacto
+    </button>
+    <hr>
+    <div *ngFor="let contacto of this.dato.contactos; let posicion = index">
+        <div class="media d-flex">
+            <img src="../../../assets/img/undraw_male_avatar_323b.svg" width="64" height="64" class="align-self-center mr-5 mb-3 rounded-circle img-fluid" alt="foto">
+            <div class="media-body">
+              <h5 class="mb-0">{{contacto.nombre}}</h5>
+              <p class="mb-0">{{contacto.celular}}</p>
+              <p><small>{{contacto.fecha_cumpleanos | date}}</small></p>              
+            </div>
+
+            <div class="align-self-center mb-3 mostrar1">
+                <button class="btn btn-warning mr-1 font-weight-bold animacion" (click)="Modal_Nuevo_Editar(editar,contacto,posicion)">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                  Actualizar
+                </button>                
+                <button class="btn btn-danger ml-1 text-white font-weight-bold animacion" (click)="this.dato.eliminar_contacto(contacto)">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                  Eliminar
+                </button>
+            </div>
+
+            <div class="align-self-center mb-3 mostrar2">
+              <button class="btn btn-warning mr-1 font-weight-bold animacion" (click)="Modal_Nuevo_Editar(editar,contacto,posicion)">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                
+              </button>              
+              <button class="btn btn-danger ml-1 text-white font-weight-bold animacion" (click)="this.dato.eliminar_contacto(contacto)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                
+              </button>
+          </div>
+          </div>
+    </div>
+</div>
+ <!-- Agregar un nuevo contacto -->
+<ng-template #nuevo>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Registrar contacto</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="this.dato.modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">    
+        <form [formGroup]="this.dato.formulario_agregar">
+            <div class="form-group">
+              <label for="numero_identificacion">Numero de identificación<i class="text-danger">*</i></label>
+              <input type="number" class="form-control" id="numero_identificacion" aria-describedby="numero_identificacion" formControlName="numero_identificacion" min="0">                            
+            </div>
+            <div class="form-group">
+              <label for="nombre_completo">Nombre completo<i class="text-danger">*</i></label>
+              <input type="text" class="form-control" id="nombre_completo" formControlName="nombre_completo">              
+            </div>
+            <div class="form-group">
+              <label for="numero_celular">Celular<i class="text-danger">*</i></label>
+              <input type="number" class="form-control" id="numero_celular" formControlName="numero_celular" min="0">                    
+            </div>
+            <div class="form-group">
+                <label for="direccion">Direccion<i class="text-danger">*</i></label>
+                <input type="text" class="form-control" id="direccion" formControlName="direccion">                
+              </div>
+              <div class="form-group">
+                <label for="fecha">Fecha de cumpleaños<i class="text-danger">*</i></label>
+                <input type="date" class="form-control" id="fecha" formControlName="fecha">
+                <!-- <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker formControlName="fecha"/>                 -->
+              </div>              
+              
+              <small class="form-text text-muted">Los campos marcados con asterisco (<i class="text-danger">*</i>) son obligatorios</small>
+              <div class="d-flex justify-content-between mt-2">
+                <button [disabled]="!this.dato.formulario_agregar.valid" type="submit" class="btn btn-primary" (click)="this.dato.guardar_contacto()">Guardar contacto</button>
+                <button class="btn btn-secondary" (click)="this.dato.modalRef.hide()">Cancelar</button>
+              </div>            
+        </form>
+  </div>
+</ng-template>
+<!-- Actualizar un contacto -->
+<ng-template #editar>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Actualizar contacto</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="this.dato.modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">    
+          <form [formGroup]="this.dato.formulario_agregar">
+              <div class="form-group">
+                <label for="numero_identificacion">Numero de identificacion<i class="text-danger">*</i></label>
+                <input type="number" class="form-control" id="numero_identificacion" formControlName="numero_identificacion" min="0">                      
+              </div>
+              <div class="form-group">
+                <label for="nombre_completo">Nombre Completo<i class="text-danger">*</i></label>
+                <input type="text" class="form-control" id="nombre_completo" formControlName="nombre_completo">                
+              </div>
+              <div class="form-group">
+                <label for="numero_celular">Celular<i class="text-danger">*</i></label>
+                <input type="number" class="form-control" id="numero_celular" formControlName="numero_celular" min="0">                      
+              </div>
+              <div class="form-group">
+                  <label for="direccion">Direccion<i class="text-danger">*</i></label>
+                  <input type="text" class="form-control" id="direccion" formControlName="direccion">                  
+                </div>
+                <div class="form-group">
+                  <label for="fecha">Fecha de cumpleaños<i class="text-danger">*</i></label>
+                  <input type="date" class="form-control" id="fecha" formControlName="fecha">                  
+                </div>
+                                              
+                <small class="form-text text-muted">Los campos marcados con asterisco (<i class="text-danger">*</i>) son obligatorios</small>
+                  <div class="d-flex justify-content-between mt-2">
+                    <button [disabled]="!this.dato.formulario_agregar.valid" type="submit" class="btn btn-primary" (click)="this.dato.actualizar_contacto()">Actualizar contacto</button>
+                    <button class="btn btn-secondary" (click)="this.dato.modalRef.hide()">Cancelar</button>
+                  </div>              
+          </form>
+    </div>
+  </ng-template>

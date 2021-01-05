@@ -1,4 +1,4 @@
-.fondo-nav{
+.fondo-boton{
     // background: rgba(24,117,247,1);
     // background: -moz-linear-gradient(-45deg, rgba(24,117,247,1) 0%, rgba(68,152,248,1) 100%);
     // background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(24,117,247,1)), color-stop(100%, rgba(68,152,248,1)));
@@ -9,13 +9,19 @@
     // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1875f7', endColorstr='#4498f8', GradientType=1 );
 
     background-color: #2F2E41;
+    color: white;
+    border-color:#2F2E41;
+    font-weight: bold;
+
+    
 }
 
-.logo{
-    background-color: white;
-    color: #FFA600;
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-weight: bold;
+.fondo-boton:hover{
+    animation: pulse;
+    animation-duration: 1.5s;    
+}
+
+.animacion:hover{
+    animation: bounce;
+    animation-duration: 1.5s;    
 }
