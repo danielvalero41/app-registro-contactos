@@ -7,13 +7,15 @@ import { DatosService } from './service/datos.service';
 import { ListaContactosComponent } from './component/lista-contactos/lista-contactos.component';
 import { PrincipalComponent } from './component/principal/principal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NuevoContactoComponent } from './component/nuevo-contacto/nuevo-contacto.component';
 // import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaContactosComponent,
-    PrincipalComponent,    
+    PrincipalComponent,
+    NuevoContactoComponent,    
   ],
   imports: [
     BrowserModule,
