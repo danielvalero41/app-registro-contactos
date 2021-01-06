@@ -8,6 +8,7 @@ import { ListaContactosComponent } from './component/lista-contactos/lista-conta
 import { PrincipalComponent } from './component/principal/principal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NuevoContactoComponent } from './component/nuevo-contacto/nuevo-contacto.component';
+import { ActualizarContactoComponent } from './component/actualizar-contacto/actualizar-contacto.component';
 // import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NuevoContactoComponent } from './component/nuevo-contacto/nuevo-contact
     AppComponent,
     ListaContactosComponent,
     PrincipalComponent,
-    NuevoContactoComponent,    
+    NuevoContactoComponent,
+    ActualizarContactoComponent,    
   ],
   imports: [
     BrowserModule,

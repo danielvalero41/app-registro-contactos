@@ -1,0 +1,30 @@
+<div class="container mt-3">
+    <form [formGroup]="this.dato.formulario_agregar">
+        <div class="form-group">
+          <label for="numero_identificacion">Numero de identificacion<i class="text-danger">*</i></label>
+          <input type="number" class="form-control" id="numero_identificacion" formControlName="numero_identificacion" min="0">                      
+        </div>
+        <div class="form-group">
+          <label for="nombre_completo">Nombre Completo<i class="text-danger">*</i></label>
+          <input type="text" class="form-control" id="nombre_completo" formControlName="nombre_completo">                
+        </div>
+        <div class="form-group">
+          <label for="numero_celular">Celular<i class="text-danger">*</i></label>
+          <input type="number" class="form-control" id="numero_celular" formControlName="numero_celular" min="0">                      
+        </div>
+        <div class="form-group">
+            <label for="direccion">Direccion<i class="text-danger">*</i></label>
+            <input type="text" class="form-control" id="direccion" formControlName="direccion">                  
+          </div>
+          <div class="form-group">
+            <label for="fecha">Fecha de cumpleaños<i class="text-danger">*</i></label>
+            <input type="date" class="form-control" id="fecha" formControlName="fecha">                  
+          </div>
+                                        
+          <small class="form-text text-muted">Los campos marcados con asterisco (<i class="text-danger">*</i>) son obligatorios</small>
+            <div class="d-flex justify-content-between mt-2">
+              <button [disabled]="!this.dato.formulario_agregar.valid" type="submit" class="btn btn-primary" (click)="this.dato.actualizar_contacto()">Actualizar contacto</button>
+              <button class="btn btn-secondary" routerLink="/lista-contacto">Cancelar</button>
+            </div>              
+    </form>
+</div>

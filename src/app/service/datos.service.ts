@@ -1,5 +1,7 @@
+import { Route } from '@angular/compiler/src/core';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Datos } from '../models/datos';
 
@@ -14,8 +16,10 @@ export class DatosService {
   posicion_editar:number = -1
   cantidad_contactos:number
   modalRef: BsModalRef; 
+  dato_contacto_temporal:Datos
+  posicion_temporal:number
 
-  constructor(private fb:FormBuilder,private modalService: BsModalService) { }
+  constructor(private fb:FormBuilder,private modalService: BsModalService,public route:Router) { }
 
 
   crear_contacto(){
@@ -51,7 +55,8 @@ export class DatosService {
       direccion: '',
       fecha: ''
     })
-    this.modalService.hide()
+    // this.modalService.hide()
+    this.route.navigateByUrl('/lista-contacto')
   }//guardar_contacto
 
   leer_contacto(){        
@@ -96,8 +101,8 @@ export class DatosService {
     })
 
     this.posicion_editar = -1
-    this.ban = true
-    this.modalService.hide()
+    
+    this.route.navigateByUrl('/lista-contacto')
   }//actualizar_contacto
 
   get ContactosLocales():number{

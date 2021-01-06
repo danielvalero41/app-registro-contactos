@@ -1,5 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Datos } from 'src/app/models/datos';
 import { DatosService } from 'src/app/service/datos.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { DatosService } from 'src/app/service/datos.service';
 export class ListaContactosComponent implements OnInit {
 
   
-  constructor(public dato:DatosService,private modalService: BsModalService) { }
+  constructor(public dato:DatosService,private modalService: BsModalService,public Ruta:Router) { }
 
   ngOnInit(): void {
     this.dato.crear_contacto() 
@@ -28,5 +30,10 @@ export class ListaContactosComponent implements OnInit {
     this.dato.editar(contacto,posicion)
   }
   
+  _editar(contacto:Datos,posicion:number){
+    this.dato.dato_contacto_temporal = contacto
+    this.dato.posicion_temporal = posicion
+    this.Ruta.navigateByUrl('/actualizar-contacto')
+  }
 
 }
